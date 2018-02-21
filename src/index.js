@@ -10,7 +10,7 @@ var renderer,
 
 function start(gl, width, height) {
   var loader = new THREE.OBJLoader();
-  var directionalLight = new THREE.DirectionalLight(0xffffff, 0.2);
+  var directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 
   renderer = new THREE.WebGLRenderer({
     canvas: gl.canvas
@@ -18,7 +18,7 @@ function start(gl, width, height) {
   renderer.setClearColor(0xffffff, 1.0);
 
   scene = new THREE.Scene();
-  scene.add(new THREE.AmbientLight(0xffffff, 0.5));
+  scene.add(new THREE.AmbientLight(0x000000, 1));
   scene.add(directionalLight);
 
   directionalLight.position.set(0, 100, 0);
@@ -59,8 +59,14 @@ function addModel(object) {
   var bumpMap = new THREE.TextureLoader().load('/assets/k2-img-mastered.png');
 
   object.material = new THREE.MeshPhongMaterial({
+    color      :  new THREE.Color("rgb(255,255,255)"),
+    emissive   :  new THREE.Color("rgb(0,0,0)"),
+    specular   :  new THREE.Color("rgb(17,17,17)"),
+    shininess  :  50,
     map: map,
-    bumpMap: bumpMap
+    bumpMap: bumpMap,
+    bumpScale: 1,
+    vertexColors: null
   });
   object.material.needsUpdate = true;
 
