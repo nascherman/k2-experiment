@@ -1,0 +1,25 @@
+{
+  "name": "k3-experiment",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "browserify src/index.js --debug -o public/bundle.js",
+    "serve": "http-server public",
+    "start": "onchange \"src\" -i -- npm run build && npm run serve",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Nick Scherman",
+  "license": "ISC",
+  "dependencies": {
+    "canvas-testbed": "^1.0.4",
+    "three-obj-loader": "^1.1.3",
+    "three-orbit-controls": "^82.1.0"
+  },
+  "devDependencies": {
+    "browserify": "^16.1.0",
+    "http-server": "^0.11.1",
+    "onchange": "^3.3.0",
+    "three": "^0.90.0"
+  }
+}
