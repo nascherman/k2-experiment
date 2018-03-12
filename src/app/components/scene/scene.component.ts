@@ -50,19 +50,16 @@ export class SceneComponent implements AfterViewChecked {
 
     let renderer, camera, scene;
     const loader = new THREE.OBJLoader();
-    const directionalLight = new THREE.DirectionalLight(0xffffff, 1);
 
     renderer = new THREE.WebGLRenderer({
+      antialias: true,
       canvas: this.createCanvas()
     });
     renderer.setClearColor(0xffffff, 1.0);
     renderer.setSize(width, height);
 
     scene = new THREE.Scene();
-    scene.add(new THREE.AmbientLight(0x000000, 1));
-    scene.add(directionalLight);
-
-    directionalLight.position.set(0, 100, 0);
+    scene.add(new THREE.AmbientLight(0xffffff, 1));
 
     camera = new THREE.PerspectiveCamera(50, width / height, 1, 1000);
     camera.position.set(0, 181, 0);
@@ -83,10 +80,8 @@ export class SceneComponent implements AfterViewChecked {
       }
     );
 
-
     // Debug
-    // window.scene = scene;
-    // window.THREE = THREE;
+    Object.assign(window, { scene, THREE });
   }
 
   addModel(object, cb) {
