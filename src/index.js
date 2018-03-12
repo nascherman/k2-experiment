@@ -30,7 +30,7 @@ function start(gl, width, height) {
   controls = new OrbitControls(camera);
 
   loader.load(
-    'assets/k2.obj',
+    'assets/k2-area.obj',
     function (object) {
       addModel(object.children[0]);
     }
@@ -55,17 +55,17 @@ function resize(width, height) {
 }
 
 function addModel(object) {
-  var map = new THREE.TextureLoader().load('/assets/k2-color.png');
-  var bumpMap = new THREE.TextureLoader().load('/assets/k2-img-mastered.png');
+  var map = new THREE.TextureLoader().load('/assets/k2-area-color.png');
+  var bumpMap = new THREE.TextureLoader().load('/assets/k2-area-map.png');
 
   object.material = new THREE.MeshPhongMaterial({
-    color      :  new THREE.Color("rgb(255,255,255)"),
-    emissive   :  new THREE.Color("rgb(0,0,0)"),
-    specular   :  new THREE.Color("rgb(17,17,17)"),
-    shininess  :  50,
+    color: new THREE.Color("rgb(255,255,255)"),
+    emissive: new THREE.Color("rgb(0,0,0)"),
+    specular: new THREE.Color("rgb(17,17,17)"),
+    shininess: 50,
     map: map,
     bumpMap: bumpMap,
-    bumpScale: 1,
+    bumpScale: 0.5,
     vertexColors: null
   });
   object.material.needsUpdate = true;
